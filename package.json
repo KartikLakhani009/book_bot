@@ -9,6 +9,7 @@
     "ingest:build-dataset": "tsx src/ingestion/buildDataset.ts",
     "ingest:store": "tsx src/rag/ingestToChroma.ts",
     "dev": "tsx src/index.ts",
+    "view:collection": "tsx src/tools/viewCollection.ts",
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
