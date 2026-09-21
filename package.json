@@ -1,0 +1,32 @@
+{
+  "name": "book-recommendation-rag",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Book Recommendation Bot (RAG) - one domain bot in a LangGraph multi-bot architecture",
+  "type": "module",
+  "scripts": {
+    "chroma:start": "chroma run --path ./chroma_data --port 8000",
+    "ingest:build-dataset": "tsx src/ingestion/buildDataset.ts",
+    "ingest:store": "tsx src/rag/ingestToChroma.ts",
+    "dev": "tsx src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.2.12",
+    "@langchain/langgraph": "^1.4.16",
+    "chromadb": "^3.5.0",
+    "csv-parse": "^5.6.0",
+    "dotenv": "^17.2.3",
+    "groq-sdk": "^1.6.0",
+    "voyageai": "^0.4.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "tsx": "^4.20.6",
+    "typescript": "^5.7.3",
+    "vitest": "^5.0.1"
+  }
+}
