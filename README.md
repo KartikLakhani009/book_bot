@@ -80,10 +80,12 @@ aren't comparable).
 - Graph: `understand` (one structured-output Groq call - resolves
   follow-ups against conversation history, scope-checks the resolved
   request, extracts structured filters) -> `retrieveBooks` -> `filterBooks`
-  -> `generateRecommendation`. See `src/bots/book/nodes.ts` and
-  `src/bots/book/understanding.ts` (the pure, unit-tested response
-  parser/validator). Conversation memory is a LangGraph `MemorySaver`
-  checkpointer keyed by `thread_id`, not manually threaded state.
+  -> `generateRecommendation`. `src/bots/book/nodes.ts` only orchestrates;
+  the pure, unit-tested logic lives in `src/bots/book/understanding.ts`
+  (response parsing/validation) and `src/bots/book/whereBuilder.ts`
+  (structured filters -> Chroma `where` clause). Conversation memory is a
+  LangGraph `MemorySaver` checkpointer keyed by `thread_id`, not manually
+  threaded state.
 - Structured filters are extracted by the LLM rather than regex, because
   natural-language phrasing (negation, filler words, topic shifts across
   turns) kept finding new edge cases regex couldn't cover. Genre tags the

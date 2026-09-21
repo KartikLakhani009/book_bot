@@ -79,7 +79,8 @@ async function main() {
     console.log(`[CHROMA] Documents stored this run: ${stored}/${documents.length}`);
   }
 
-  console.log(`[CHROMA] Done. Collection "${collection.name}" now has ${await collection.count()} book documents.`);
+  const finalCount = await collection.count();
+  console.log(`[CHROMA] Done. Collection "${collection.name}" now has ${finalCount} book documents.`);
 }
 
 main().catch((err) => {

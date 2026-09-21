@@ -17,15 +17,15 @@ export interface BookFilters {
 
 export interface BookBotState {
   query: string;
-  /** Set by validateScopeNode; false short-circuits the graph straight to END. */
+  /** Set by understandNode; false short-circuits the graph straight to END. */
   inScope?: boolean;
   /** Prior turns for this thread (see graph.ts's MemorySaver checkpointer). */
   history: ConversationTurn[];
   /**
    * `query` rewritten into a standalone request using `history` (see
-   * contextualizeQueryNode) - e.g. "what about 4.24" -> "books rated above
-   * 4.24". Retrieval/generation use this; `query`/`history` stay as the
-   * original text for the next turn's context.
+   * understandNode in nodes.ts) - e.g. "what about 4.24" -> "books rated
+   * above 4.24". Retrieval/generation use this; `query`/`history` stay as
+   * the original text for the next turn's context.
    */
   resolvedQuery?: string;
   filters?: BookFilters;

@@ -54,7 +54,9 @@ export function buildUnderstandingMessages(
   tagHints: string[],
 ): ChatMessage[] {
   const historyBlock = history.length
-    ? history.map((turn, i) => `Turn ${i + 1}\nUser: ${turn.query}\nAssistant: ${turn.answer}`).join("\n\n")
+    ? history
+        .map((turn, i) => `Turn ${i + 1}\nUser: ${turn.query}\nAssistant: ${turn.answer}`)
+        .join("\n\n")
     : "(none - this is the first message)";
 
   const userPrompt = `Conversation so far:

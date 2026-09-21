@@ -38,8 +38,8 @@ export async function getBookCollection(): Promise<Collection> {
         },
       });
     } catch (err) {
-      const cause = err as { cause?: { code?: string }; message?: string };
-      if (cause.cause?.code === "ECONNREFUSED" || /fetch failed/i.test(cause.message ?? "")) {
+      const typedErr = err as { cause?: { code?: string }; message?: string };
+      if (typedErr.cause?.code === "ECONNREFUSED" || /fetch failed/i.test(typedErr.message ?? "")) {
         throw new Error(
           `Could not reach ChromaDB at ${env.CHROMA_URL}. Is the local server running? ` +
             `Start it with: npm run chroma:start`,

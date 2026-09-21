@@ -39,10 +39,8 @@ export async function retrieveCandidateBooks(
 
   // Chroma requires each `where` object to have exactly one top-level key,
   // so multi-field filters must be combined explicitly via $and.
-  const baseFilter: Where = { $and: [{ rag: "book_recommendation" }, { domain: "books" }] };
-  const where: Where = options.where
-    ? { $and: [{ rag: "book_recommendation" }, { domain: "books" }, options.where] }
-    : baseFilter;
+  const scopeClauses: Where[] = [{ rag: "book_recommendation" }, { domain: "books" }];
+  const where: Where = { $and: options.where ? [...scopeClauses, options.where] : scopeClauses };
 
   console.log(`[RETRIEVAL] Query: ${query}`);
 

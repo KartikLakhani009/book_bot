@@ -3,10 +3,10 @@ import { z } from "zod";
 
 const envSchema = z.object({
   GROQ_API_KEY: z.string().min(1, "GROQ_API_KEY is required"),
-  GROQ_MODEL: z.string().min(1).default("openai/gpt-oss-120b"),
+  GROQ_MODEL: z.string().min(1).default("openai/gpt-oss-20b"),
 
   VOYAGE_API_KEY: z.string().min(1, "VOYAGE_API_KEY is required"),
-  VOYAGE_EMBEDDING_MODEL: z.string().min(1).default("voyage-3.5"),
+  VOYAGE_EMBEDDING_MODEL: z.string().min(1).default("voyage-3.5-lite"),
 
   CHROMA_URL: z.string().url().default("http://localhost:8000"),
   CHROMA_COLLECTION: z.string().min(1).default("book_documents"),
