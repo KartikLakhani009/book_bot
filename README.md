@@ -3,6 +3,9 @@
 TypeScript + LangGraph + Groq + Voyage AI + ChromaDB, over the
 [Goodbooks-10k](https://github.com/zygmuntz/goodbooks-10k) dataset.
 
+## Explaination
+ the explantion folder contain pdf and video which explain codebase, decision taken etc please go through and read it
+
 ## Setup
 
 1. `npm install`
